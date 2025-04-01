@@ -1,33 +1,36 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Signup() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     if (!username || !password) {
-      setError('Username and password are required');
+      setError("Username and password are required");
       return;
     }
 
     try {
-      const res = await axios.post('http://localhost:5001/signup', {
+      const res = await axios.post("http://localhost:5001/signup", {
         username,
-        password
+        password,
       });
+      console.log("Signup Response:", res.data);
 
-      alert('Signup successful! Please sign in.');
-      navigate('/signin'); // Redirect to signin page
+      alert("Signup successful! Please sign in.");
+      navigate("/signin"); // Redirect to signin page
     } catch (err) {
-      console.error('Signup Error:', err.response?.data || err.message);
-      setError(err.response?.data?.message || 'Signup failed. Please try again.');
+      console.error("Signup Error:", err.response?.data || err.message);
+      setError(
+        err.response?.data?.message || "Signup failed. Please try again."
+      );
     }
   };
 
