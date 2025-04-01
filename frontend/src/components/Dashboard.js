@@ -15,7 +15,7 @@ function Dashboard() {
 
     const fetchItems = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/auctions");
+        const res = await axios.get("http://localhost:5001/auctions");
         setItems(res.data);
       } catch (error) {
         console.error("Error fetching auctions:", error);
