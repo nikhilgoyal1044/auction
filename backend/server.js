@@ -11,13 +11,10 @@ app.use(cors());
 const SECRET_KEY = "my_super_secret_123!";
 
 // Connect to MongoDB
-mongoose.connect(
-  "mongodb+srv://hari:oz1mIw9DvJPNB58J@p2auction.o2xyi.mongodb.net/",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+mongoose.connect("mongodb://localhost:27017/auctionDB", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 // User Schema
 const userSchema = new mongoose.Schema({
